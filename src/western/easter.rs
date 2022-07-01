@@ -24,10 +24,10 @@ pub fn date(year: i32) -> Result<NaiveDate, WesternDateError> {
     let advance_sunday = calendar_moon + 7 - (sunday + calendar_moon).rem_euclid(7);
     if advance_sunday > 31 {
         // our answer is in April
-        return Ok(NaiveDate::from_ymd(year, 4, (advance_sunday - 31) as u32));
+        Ok(NaiveDate::from_ymd(year, 4, (advance_sunday - 31) as u32))
     } else {
         // oura nswer is in March
-        return Ok(NaiveDate::from_ymd(year, 3, advance_sunday as u32));
+        Ok(NaiveDate::from_ymd(year, 3, advance_sunday as u32))
     }
 }
 
