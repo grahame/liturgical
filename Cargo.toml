@@ -1,8 +1,14 @@
 [package]
-name = "liturgical"
-version = "0.1.0"
 edition = "2021"
-
-# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+name = "liturgical"
+description = "Calculates the Christian liturgical calendar"
+license = "Apache-2.0"
+authors = ["Grahame Bowland <grahame@oreamnos.com.au>"]
+homepage = "https://github.com/grahame/liturgical/"
+repository = "https://github.com/grahame/liturgical/"
+documentation = "https://docs.rs/liturgical"
+readme = "README.md"
+version = "0.1.0"
 
 [dependencies]
+chrono = "0.4.19"
