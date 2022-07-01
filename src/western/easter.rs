@@ -1,20 +1,12 @@
+use super::error::WesternDateError;
 use chrono::naive::NaiveDate;
-
-#[derive(Debug, Eq, PartialEq)]
-pub enum EasterError {
-    NoYearZero,
-    InvalidPrior1583,
-}
 
 /// calculate Easter according to the Gregorian calendar of the Western church,
 /// for the given year. Algorithm comes from Knuth, The Art of Computer Programming,
 /// Third Edition, p160
-pub fn date(year: i32) -> Result<NaiveDate, EasterError> {
-    if year == 0 {
-        return Err(EasterError::NoYearZero);
-    }
+pub fn date(year: i32) -> Result<NaiveDate, WesternDateError> {
     if year < 1583 {
-        return Err(EasterError::InvalidPrior1583);
+        return Err(WesternDateError::InvalidPrior1583);
     }
     // the Gregorian calendar came in
     let golden_number = year.rem_euclid(19) + 1;
@@ -61,8 +53,8 @@ mod tests {
 
     #[test]
     fn fail_before_gregory() {
+        use super::super::error::WesternDateError;
         use super::date;
-        use super::EasterError;
-        assert_eq!(date(1582), Err(EasterError::InvalidPrior1583));
+        assert_eq!(date(1582), Err(WesternDateError::InvalidPrior1583));
     }
 }
