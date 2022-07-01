@@ -11,7 +11,7 @@ on:
     branches: [main]
 
 jobs:
-  lint:
+  tests:
     runs-on: ubuntu-latest
 
     steps:
@@ -22,6 +22,6 @@ jobs:
           toolchain: stable
           override: true
       - uses: Swatinem/rust-cache@v1
-      - name: Lint
+      - name: tests
         run: |
           cargo test
