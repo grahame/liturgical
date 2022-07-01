@@ -8,7 +8,6 @@ pub fn date(year: i32) -> Result<NaiveDate, WesternDateError> {
     if year < 1583 {
         return Err(WesternDateError::InvalidPrior1583);
     }
-    // the Gregorian calendar came in
     let golden_number = year.rem_euclid(19) + 1;
     let century = (year / 100) + 1;
     let dropped_leap_years = (3 * century) / 4 - 12;
