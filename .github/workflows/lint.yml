@@ -25,3 +25,5 @@ jobs:
       - name: Lint
         run: |
           cargo fmt -- --check
+          rustup component add clippy
+          cargo clippy

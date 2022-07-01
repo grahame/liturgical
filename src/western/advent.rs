@@ -13,7 +13,6 @@ pub fn date(year: i32) -> Result<NaiveDate, WesternDateError> {
     // the number of days we need to seek back for the Sunday prior to Christmas Day
     // (if Christmas Day is on a Sunday, this is 7)
     let sunday_offset = christmas.weekday() as i64 + 1;
-    println!("{}", sunday_offset);
     let advent_sunday = christmas + Duration::days(-21 - sunday_offset);
 
     return Ok(advent_sunday);
